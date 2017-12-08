@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>Weather</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on("click", "img", function(){
+                var id = this.id;
+                $.get(`https://anapioficeandfire.com/api/houses/` + id, function(res){
+                    var html_str = "";
+                    html_str += "<h4>Name: " + res.name + "</h4>";
+                    html_str += "<h4>Titles: " + res.titles + "</h4>";
+                    html_str += "<h4>Words: " + res.words + "</h4>";
+
+
+                    $("#display").html(html_str);
+
+                }, "json");
+            })
+        
+        });
+    </script>
+    <style type="text/css">
+        #wrapper{
+            width: 1200px;
+        }
+        img{
+            width: 24%;
+            
+        }
+        .lan{
+           width: 18%;
+        }
+        #display{
+            height: 220px;
+            width: 91%;
+            border: 2px solid red;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <img id=17 class="bar" src="baratheon.png">
+        <img id=229 class="lan" src="lannister.jpg">
+        <img id="362" class="str" src="stark.jpg">
+        <img id="378" class="tar" src="targaryen.jpg">
+        <h2>House Details</h2>
+            <div id="display">
+            
+            </div>
+    </div>
+</body>
+</html>
